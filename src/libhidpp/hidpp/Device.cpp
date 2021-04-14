@@ -35,7 +35,7 @@ Device::InvalidProtocolVersion::InvalidProtocolVersion (const std::tuple<unsigne
 	std::stringstream ss;
 	unsigned int minor, major;
 	std::tie (major, minor) = version;
-	ss << "Invalid protocol version: " << major << "." << minor << std::endl;
+	ss << "Invalid protocol version: " << major << "." << minor;
 	_msg = ss.str ();
 }
 
