@@ -365,7 +365,7 @@ int RawDevice::writeReport (const std::vector<uint8_t> &report)
 	memset (&overlapped, 0, sizeof (OVERLAPPED));
 	auto it = _p->reports.find (report[0]);
 	if (it == _p->reports.end ())
-		throw std::runtime_error ("Report ID not found.");
+		throw std::runtime_error ("Report ID " + std::to_string(report[0]) + " not found.");
 	if (!WriteFile (it->second, report.data (), report.size (),
 			&written, &overlapped)) {
 		err = GetLastError ();
