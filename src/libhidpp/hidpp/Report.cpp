@@ -45,11 +45,11 @@ const char *Report::InvalidReportLength::what () const noexcept
 
 namespace Offset
 {
-static constexpr unsigned int Type = 0;
-static constexpr unsigned int DeviceIndex = 1;
-static constexpr unsigned int SubID = 2;
-static constexpr unsigned int Address = 3;
-static constexpr unsigned int Parameters = 4;
+static constexpr unsigned int Type = 0;			// Generic
+static constexpr unsigned int DeviceIndex = 1;	// Generic
+static constexpr unsigned int SubID = 2;		// HID++ 1.0: SubID,   HID++ 2.0: FeatureIndex
+static constexpr unsigned int Address = 3;		// HID++ 1.0: Address, HID++ 2.0: Function|SoftwareID
+static constexpr unsigned int Parameters = 4;	// Generic
 }
 
 Report::Report (uint8_t report_id, const uint8_t *data, std::size_t length)
