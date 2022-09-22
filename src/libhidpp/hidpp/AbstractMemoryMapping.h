@@ -39,6 +39,7 @@ class AbstractMemoryMapping
 {
 public:
 	AbstractMemoryMapping (bool write_crc = true);
+	virtual ~AbstractMemoryMapping() {}
 
 	/**
 	 * Get the page at \p address (offset is ignored) as read-only.
