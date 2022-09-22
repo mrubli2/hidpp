@@ -37,6 +37,8 @@ namespace HIDPP
 class AbstractMacroFormat
 {
 public:
+	virtual ~AbstractMacroFormat() {}
+
 	/**
 	 * This exception is thrown when the macro format cannot
 	 * encode the requested instruction.
