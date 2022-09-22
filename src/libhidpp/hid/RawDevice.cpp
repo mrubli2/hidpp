@@ -30,7 +30,7 @@ void RawDevice::logReportDescriptor () const
 	for (const auto &collection: _report_desc.collections) {
 		debug << "Collection: " << std::hex << uint32_t (collection.usage) << std::dec << std::endl;
 		for (const auto &[id, fields]: collection.reports) {
-			const char *type;
+			const char *type = nullptr;
 			switch (id.type) {
 			case ReportID::Type::Input: type = "Input"; break;
 			case ReportID::Type::Output: type = "Output"; break;
