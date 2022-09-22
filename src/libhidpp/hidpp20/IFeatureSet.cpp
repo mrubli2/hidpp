@@ -16,6 +16,8 @@
  *
  */
 
+#include <stdexcept>
+
 #include <hidpp20/IFeatureSet.h>
 
 #include <misc/Endian.h>
@@ -45,6 +47,9 @@ uint16_t IFeatureSet::getFeatureID (uint8_t feature_index,
 	std::vector<uint8_t> params (1), results;
 	params[0] = feature_index;
 	results = call (GetFeatureID, params);
+	if (results.size() < 4)
+		throw std::runtime_error{ "Response too short. Expected at least 4 bytes." };
+
 	if (obsolete)
 		*obsolete = results[2] & (1<<7);
 	if (hidden)
