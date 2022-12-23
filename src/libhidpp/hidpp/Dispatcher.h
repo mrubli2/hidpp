@@ -24,6 +24,7 @@
 #include <map>
 #include <functional>
 #include <optional>
+#include <string>
 
 namespace HIDPP
 {
