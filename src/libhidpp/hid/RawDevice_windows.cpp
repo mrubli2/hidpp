@@ -189,7 +189,7 @@ RawDevice::RawDevice (const std::string &path):
 		}
 
 		HANDLE event = CreateEvent (NULL, TRUE, TRUE, NULL);
-		if (event == INVALID_HANDLE_VALUE) {
+		if (event == NULL) {
 			err = GetLastError ();
 			throw std::system_error (err, windows_category (),
 						 "CreateEvent");
@@ -301,7 +301,7 @@ RawDevice::RawDevice (const std::string &path):
 
 
 	_p->interrupted_event = CreateEvent (NULL, FALSE, FALSE, NULL);
-	if (_p->interrupted_event == INVALID_HANDLE_VALUE) {
+	if (_p->interrupted_event == NULL) {
 		err = GetLastError ();
 		throw std::system_error (err, windows_category (),
 					 "CreateEvent");
@@ -328,7 +328,7 @@ RawDevice::RawDevice (const RawDevice &other):
 		}
 
 		HANDLE event = CreateEvent (NULL, TRUE, TRUE, NULL);
-		if (event == INVALID_HANDLE_VALUE) {
+		if (event == NULL) {
 			err = GetLastError ();
 			throw std::system_error (err, windows_category (),
 						 "CreateEvent");
@@ -338,7 +338,7 @@ RawDevice::RawDevice (const RawDevice &other):
 	}
 
 	_p->interrupted_event = CreateEvent (NULL, FALSE, FALSE, NULL);
-	if (_p->interrupted_event == INVALID_HANDLE_VALUE) {
+	if (_p->interrupted_event == NULL) {
 		err = GetLastError ();
 		throw std::system_error (err, windows_category (),
 					 "CreateEvent");
