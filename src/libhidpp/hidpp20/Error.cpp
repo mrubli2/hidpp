@@ -45,8 +45,8 @@ const char *Error::what () const noexcept
 		return "Out of range";
 	case HWError:
 		return "Hardware error";
-	case LogitechInternal:
-		return "Logitech internal";
+	case NotAllowed:
+		return "Not allowed";
 	case InvalidFeatureIndex:
 		return "Invalid feature index";
 	case InvalidFunctionID:
