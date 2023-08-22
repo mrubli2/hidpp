@@ -42,7 +42,9 @@ uint16_t IFeatureSet::getFeatureID (uint8_t feature_index,
 				    bool *obsolete,
 				    bool *hidden,
 				    bool *internal,
-				    uint8_t *version)
+				    uint8_t *version,
+				    bool *manuf_deact,
+				    bool *compl_deact)
 {
 	std::vector<uint8_t> params (1), results;
 	params[0] = feature_index;
@@ -51,11 +53,15 @@ uint16_t IFeatureSet::getFeatureID (uint8_t feature_index,
 		throw std::runtime_error{ "Response too short. Expected at least 4 bytes." };
 
 	if (obsolete)
-		*obsolete = results[2] & (1<<7);
+		*obsolete = results[2] & Obsolete;
 	if (hidden)
-		*hidden = results[2] & (1<<6);
+		*hidden = results[2] & Hidden;
 	if (internal)
-		*internal = results[2] & (1<<5);
+		*internal = results[2] & Internal;
+	if (manuf_deact)
+		*manuf_deact = results[2] & EngineeringDeactivatable;
+	if (compl_deact)
+		*compl_deact = results[2] & ComplianceDeactivatable;
 	if (version)
 		*version = results[3];
 	return readBE<uint16_t> (results, 0);

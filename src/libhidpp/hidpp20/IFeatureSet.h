@@ -34,6 +34,14 @@ public:
 		GetFeatureID = 1,
 	};
 
+	enum FeatureType {
+		Obsolete                    = 1 << 7,
+		Hidden                      = 1 << 6,
+		Internal                    = 1 << 5,
+		EngineeringDeactivatable    = 1 << 4,
+		ComplianceDeactivatable     = 1 << 3,
+	};
+
 	IFeatureSet (Device *dev);
 
 	unsigned int getCount ();
@@ -41,7 +49,9 @@ public:
 			       bool *obsolete = nullptr,
 			       bool *hidden = nullptr,
 			       bool *internal = nullptr,
-			       uint8_t *version = nullptr);
+			       uint8_t *version = nullptr,
+			       bool *manuf_deact = nullptr,
+			       bool *compl_deact = nullptr);
 };
 
 }
