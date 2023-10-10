@@ -126,6 +126,8 @@ public:
 			HasShortReport = 1<<0,
 			HasLongReport = 1<<1,
 			HasVeryLongReport = 1<<2,
+			UsesLegacyScheme = 1<<3,
+			UsesModernScheme = 1<<4,
 		};
 		int flags;
 

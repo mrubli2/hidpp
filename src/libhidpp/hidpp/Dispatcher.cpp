@@ -151,5 +151,9 @@ void Dispatcher::checkReportDescriptor (const HID::ReportDescriptor &rdesc)
 		Log::warning () << "Expected HID++ reports were not found." << std::endl;
 	if (_report_info.flags == 0)
 		throw Dispatcher::NoHIDPPReportException ();
+	if (scheme == Legacy)
+		_report_info.flags |= ReportInfo::UsesLegacyScheme;
+	else if (scheme == Modern)
+		_report_info.flags |= ReportInfo::UsesModernScheme;
 }
 
