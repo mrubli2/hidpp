@@ -61,6 +61,16 @@ namespace HIDPP10
 		FirmwareInfo = 0xF1,
 	};
 
+	// Register 0x01 (EnableNotifications): Receiver reporting flags (r1)
+	enum EnableNotificationsDevices: uint8_t {
+		WirelessNotifications = 0b00000001,
+	};
+
+	// Register 0x02 (ConnectionState): Actions
+	enum ConnectionState: uint8_t {
+		ActionFakeDeviceArrival = 0x02,
+	};
+
 	constexpr std::size_t PageSize = 512;
 	constexpr std::size_t RAMSize = 400;
 }
